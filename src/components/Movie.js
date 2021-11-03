@@ -9,8 +9,9 @@ function Movie(props){
             <p>Rating: {props.rating}</p>
 
             { 
-                props.rating > 8 && 
-                <p className="badge"><strong>POPULAR</strong></p>
+                props.rating > 8 ?
+                <p className="badge"><strong>POPULAR</strong></p> : 
+                "" 
             }
 
         </div>
