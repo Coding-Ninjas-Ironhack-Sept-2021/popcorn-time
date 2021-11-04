@@ -13,6 +13,11 @@ class Main extends React.Component {
     }
 
     createMovie = (newMovieDetails) => {
+        
+        // Add a unique id for the new movie (fixes 'Each child in a list should have a unique "key" prop.')
+        const arrayOfIds = this.state.moviesToDisplay.map( movie => movie.id );
+        newMovieDetails.id = Math.max(...arrayOfIds) + 1;
+
         this.setState( (prevState) => {
             const newList = [newMovieDetails, ...prevState.moviesToDisplay];
             return { moviesToDisplay: newList };
