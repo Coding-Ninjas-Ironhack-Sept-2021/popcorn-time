@@ -5,13 +5,17 @@ class AddMovie extends Component {
     constructor(props){
         super(props);
         this.state = {
-            title: ""
+            title: "",
+            year: "",
+            rating: ""
         };
     }
 
-    handleTitleChange  = (event) => {
-        this.setState({title: event.target.value})
+    handleInputChange = (event) => {
+        const nameOfTheInput = event.target.name;
+        this.setState({[nameOfTheInput]: event.target.value});
     }
+
 
     render() {
         return (
@@ -25,8 +29,29 @@ class AddMovie extends Component {
                             type="text" 
                             name="title" 
                             value={this.state.title} 
-                            onChange={this.handleTitleChange }
-                        />
+                            onChange={this.handleInputChange } />
+                    </label>
+
+                    <label>
+                        Year:
+                        <input 
+                            type="number" 
+                            name="year" 
+                            min="1900"
+                            max="2100"
+                            value={this.state.year} 
+                            onChange={this.handleInputChange} />
+                    </label>
+
+                    <label>
+                        Rating:
+                        <input 
+                            type="number" 
+                            name="rating" 
+                            min="1"
+                            max="10"
+                            value={this.state.rating} 
+                            onChange={this.handleInputChange} />
                     </label>
                     
                     <button>Submit</button>
