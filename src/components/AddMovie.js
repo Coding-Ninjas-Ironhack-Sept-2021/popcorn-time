@@ -25,7 +25,15 @@ class AddMovie extends Component {
             rating: this.state.rating,
         }
 
+        // call a method in parent component to create the new movie (we're passing an object with the details of the new movie)
         this.props.addMovieHandler(movieInfo);
+
+        //reset form
+        this.setState({
+            title: "",
+            year: "",
+            rating: "",
+        })
 
     }
 
