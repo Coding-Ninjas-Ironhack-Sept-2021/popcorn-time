@@ -12,6 +12,13 @@ class Main extends React.Component {
         };
     }
 
+    createMovie = (newMovieDetails) => {
+        this.setState( (prevState) => {
+            const newList = [newMovieDetails, ...prevState.moviesToDisplay];
+            return { moviesToDisplay: newList };
+        });
+    }
+
     renderClassicsOnly = () => {
         this.setState( (prevState, props) => {
             const newList = prevState.moviesToDisplay.filter( (movie) => {
@@ -31,7 +38,7 @@ class Main extends React.Component {
                     </button>
                 </div>
 
-                <AddMovie />
+                <AddMovie addMovieHandler={this.createMovie} />
 
                 <div className="movie-list">
                     { this.state.moviesToDisplay.map( (movie) => {
